@@ -19,16 +19,16 @@ int func_vidParseDictfile(char *var_dictfilename){
    int loc_wordcount=0; // Index to count the number of word
    int i; //index to run through characters
    int j; // index to run through the words
-   FILE *fp_dictfilestreamOut = NULL;
+   //FILE *fp_dictfilestreamOut = NULL;
    FILE *fp_wordtocountstream = NULL;
 
 
    fp_dictfilestream = fopen(var_dictfilename, "r");
-   fp_dictfilestreamOut = fopen(dictfilename, "w");
+   //fp_dictfilestreamOut = fopen(dictfilename, "w");
    fp_wordtocountstream = fopen(builtdictfilename, "w");
    if (fp_dictfilestream == NULL) return 1;
    if (fp_wordtocountstream == NULL) return 1;
-   if (fp_dictfilestreamOut == NULL) return 1;
+   //if (fp_dictfilestreamOut == NULL) return 1;
       
    while(fgets(char_buffer, DEF_LINE_LENGTH, fp_dictfilestream)){
       if((!(strlen(char_buffer) == 0)) && (char_buffer[0] != '#') && (char_buffer[0] != '\n')){
@@ -54,8 +54,8 @@ int func_vidParseDictfile(char *var_dictfilename){
          if (loc_wordcount == 1){
             fprintf(fp_wordtocountstream, "%s", loc_StringOfWords[0]);
          } else { //TODO delete
-           for(i=0;i < loc_wordcount;i++)
-              fprintf(fp_dictfilestreamOut, "%s", loc_StringOfWords[i]);
+           //for(i=0;i < loc_wordcount;i++)
+              //fprintf(fp_dictfilestreamOut, "%s", loc_StringOfWords[i]);
          }
       }
    }
@@ -71,7 +71,7 @@ int func_vidParseDictfile(char *var_dictfilename){
  * Input: 
  * var_inputfile - name of the input file to concatenate 
  * OutPut: 
- * fp_builtinputfile - The final file with all input (global variable)
+ * fp_builtinputfile - The final inputs file concatenated with all inputs (global variable)
  * */
 int func_vidbuildinputstream(char *var_inputfile){
    FILE *fp_inputfile = NULL;
@@ -96,7 +96,7 @@ int func_vidbuildinputstream(char *var_inputfile){
 
 /**!Comment: This function reads input files for standard input
  * Input: standard Input
- * Output: array of file name
+ * Output: array of file name read from standard input
  **/
 void func_vidrequestinputfiles(){
    char buf_localstr[DEF_LINE_LENGTH]; // temp buffer to hold string from standard input
