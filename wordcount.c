@@ -7,7 +7,59 @@ FILE *fp_builtinputfile = NULL;
 FILE *fp_dictfilestream = NULL;
 char *builtinputfilename = "tmp_finalinputfiles.txt";
 char *builtdictfilename = "tmp_finaldictfile.txt";
-char *dictfilename = "tmp_dictfile.txt";
+//char *dictfilename = "tmp_dictfile.txt";
+
+
+/*!Comment: This function counts the number of words and display the result 
+ * Input: 
+ * builtdictfilename - file with dictfile words (keys)
+ * builtinputfilename - file with all inputfile concatenated
+ * Output:
+ * Result of count 
+ * */
+int func_vidcountwordfromdicttoinput(){
+   char loc_currword[DEF_LINE_LENGTH];
+   FILE *fp_finaldictfile = NULL;
+   FILE *fp_finalinputfile = NULL;
+   int value = 1;
+   int loc_incr;
+   char key[1024];
+   char pattern[1024];
+   int flag = 0;
+
+   fp_finalinputfile = fopen(builtdictfilename, "r");
+   if (fp_finalinputfile == NULL){
+      printf("error file");
+      return 1;
+   } 
+
+   while (fscanf(fp_finalinputfile, " %1023s", pattern) == 1){
+      pattern[strcspn(pattern, "\n")] = 0;
+      fp_finaldictfile = fopen(builtinputfilename, "r");
+      if (fp_finaldictfile == NULL) return 1;
+      loc_incr = 0;
+      while (fscanf(fp_finaldictfile, " %1023s", key) == 1){
+         key[strcspn(key, "\n")] = 0;
+         value = strcmp(key,pattern); 
+         if(value == 0){
+            loc_incr ++; 
+         }      
+         if (flag == 0){
+            var_TotalWordCount ++;
+         }
+      }   
+            flag = 1;
+      fclose(fp_finaldictfile);
+
+      /*!Comment: provide results */
+      if(loc_incr > 0){
+         printf("%d\t%s\n", loc_incr, pattern);
+      }
+
+      }
+   fclose(fp_finalinputfile);
+}
+
 
 /*!Comment: This function parses dictfile and removes empty lines and # started lines.
  * Input: var_dictfilename - dictfile file name (from commad line)
