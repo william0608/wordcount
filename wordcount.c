@@ -10,8 +10,8 @@ FILE *FP_BUILTINPUTFILE = NULL; // For concatenation of inputs files
 FILE *FP_DICTFILESTREAM = NULL; // For dictfile after parsing
 char *VAR_BUILTINPUTFILENAME = "tmp_finalinputfiles.txt";
 char *VAR_BUILTDICTFILENAME = "tmp_finaldictfile.txt";
-int VAR_ERROR = 0;
-int VAR_FUNCNUMBER = 99;
+int VAR_ERROR = 0; // will be set to 1 if an error occur to exit the program
+int VAR_FUNCNUMBER = 99; // will hold the id number of the function when an error occur
 
 
 /*!Comment: This function deletes temp files 
@@ -22,7 +22,8 @@ void func_cleanrepo(){
        /*!Comment: do nothing*/
    } else {
       VAR_FUNCNUMBER = 1;
-      VAR_ERROR = 1;
+      printf("The temp file could not be deleted\n");
+      //VAR_ERROR = 1;
    }
 }
 

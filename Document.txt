@@ -14,8 +14,26 @@ The program will first get the inputs, consolidate the inpiuts then execute the 
   The function func_vidrequestinputfiles() will manages the standard inputs
   The function func_vidbuildinputstream() will manage command line inputs
   The function func_vidParseDictfile() will parse the dicftfile 
--
+- at the end of reading input, the two file generated are: the tmp_finaldictfile.txt (with the ist of owrds to search) and the tmp_finalinputfiles.txt (with the concatenation of all inputs fils)
+  The function func_vidcountwordfromdicttoinput() will count and print the word on stdout
+- The function func_cleanrepo() will delete temporary files from repo
 
 # Usage
 the wordcout is compilated as follow:
 gcc wordcound.c -o wordcound
+
+# execution
+1) execution passing input file name as argument: 
+$./wordcount dictfile.txt testinput1.txt testinput2.txt testinput3.txt
+
+2) execution with input file as argument but from standard input: 
+$./wordcount dictfile.txt
+please enter the list of files : testinput1.txt testinput2.txt testinput3.txt
+
+
+# The improvement
+1- The algorithm to count the words can be substituted by a more efficient using linked list
+2- The peace of code that count the word can be executed from threads to optimize execution time
+3- The inputs can be optimize to handle usage errors
+4- Error handling can be optimize to locate the source of error
+
