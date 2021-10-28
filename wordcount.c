@@ -208,6 +208,7 @@ int main(int argc, char **argv)
    }
    fclose(fp_builtinputfile);
 
+   func_vidcountwordfromdicttoinput();
 
    return 0;
 }
