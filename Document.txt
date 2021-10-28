@@ -1,8 +1,9 @@
 # Assumption to start
 
-The dictfile is the file used as key for searching word inside inputs files.
-The program will no execute if no dictfile in not provided
-the wordcount program parses the dicfile to build the list of key word to search
-The input stream files are made by the input provided from command line or from standard input
-The total number of word is the sum of all word from input files concatenated
+- The dictfile is the file used as key for searching word inside inputs files.
+- The program will no execute if no dictfile in not provided
+- The wordcount program parses the dicfile to build the list of key word to search
+- The input stream files are made by the input provided from command line or from standard input
+  - The input stream aare consider as file present in the currect directory
+- The total number of word is the sum of all word from input files concatenated
 

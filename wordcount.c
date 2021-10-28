@@ -5,7 +5,10 @@
 
 
 
-/*!Comment: This function reads input files for standard input*/
+/**!Comment: This function reads input files for standard input
+ * Input: standard Input
+ * Output: array of file name
+ **/
 void func_vidrequestinputfiles(){
    char buf_localstr[DEF_LINE_LENGTH]; // temp buffer to hold string from standard input
    char loc_listOffile[DEF_LINE_LENGTH][DEF_LINE_LENGTH]; // temp buffer to hold the word (input file name)
@@ -35,6 +38,33 @@ void func_vidrequestinputfiles(){
    }
 
    return;
+}
+
+
+/**!Comment: This function concatenate the input stream 
+ * Input: 
+ * var_inputfile - name of the input file to concatenate 
+ * OutPut: 
+ * fp_builtinputfile - The final file with all input (global variable)
+ * */
+int func_vidbuildinputstream(char *var_inputfile){
+   FILE *fp_inputfile = NULL;
+   char char_buffer[DEF_LINE_LENGTH];
+
+   fp_inputfile = fopen(var_inputfile, "r");
+   if (fp_inputfile == NULL)
+   {
+printf("errr %s",var_inputfile);
+   return 1;
+   } 
+   /*!Comment: read fp_inputfile and append the content in fp_builtinputfile */
+   while(fgets(char_buffer, DEF_LINE_LENGTH, fp_inputfile)){
+      fprintf(fp_builtinputfile, "%s", char_buffer);
+   }
+   fprintf(fp_builtinputfile, "\n");
+
+   /*!Comment: Free memory */
+   fclose(fp_inputfile);
 }
 
 
