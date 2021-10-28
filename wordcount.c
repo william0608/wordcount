@@ -1,19 +1,20 @@
 #include <stdio.h>
 #include <string.h>
 
-#define DEF_LINE_LENGTH 65
+#define DEF_LINE_LENGTH 1023
 
 
 
-/*! This function reads input files for standard input*/
-int func_vidrequestinputfiles(){
-   char buf_localstr[DEF_LINE_LENGTH];
-   char loc_listOffile[DEF_LINE_LENGTH][DEF_LINE_LENGTH]; 
+/*!Comment: This function reads input files for standard input*/
+void func_vidrequestinputfiles(){
+   char buf_localstr[DEF_LINE_LENGTH]; // temp buffer to hold string from standard input
+   char loc_listOffile[DEF_LINE_LENGTH][DEF_LINE_LENGTH]; // temp buffer to hold the word (input file name)
    int i,j,filecount;
  
    printf("please enter the list of files : ");
    fgets(buf_localstr, sizeof buf_localstr, stdin);   
 
+   /*!Comment: find word from string */
    j=0; filecount=0;
    for(i=0;i<=(strlen(buf_localstr));i++){
       if(buf_localstr[i]==' '|| buf_localstr[i]=='\0'){
@@ -26,14 +27,14 @@ int func_vidrequestinputfiles(){
          loc_listOffile[filecount][j]=buf_localstr[i];
          j++;
       }
-    }
+   }
 
-    // Build the input file
-    for(i=0;i < filecount;i++){
+   /*!Comment: Build the input file*/
+   for(i=0;i < filecount;i++){
       loc_listOffile[i][strcspn(loc_listOffile[i], "\n")] = 0;
-      printf("%s - ",loc_listOffile[i]); // TODO check the last element
-    }
+   }
 
+   return;
 }
 
 
