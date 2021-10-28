@@ -3,6 +3,7 @@
 
 #define DEF_LINE_LENGTH 1023
 
+int var_TotalWordCount = 0;
 FILE *fp_builtinputfile = NULL;
 FILE *fp_dictfilestream = NULL;
 char *builtinputfilename = "tmp_finalinputfiles.txt";
@@ -23,8 +24,8 @@ int func_vidcountwordfromdicttoinput(){
    FILE *fp_finalinputfile = NULL;
    int value = 1;
    int loc_incr;
-   char key[1024];
-   char pattern[1024];
+   char key[1023];  // Read from dictfile
+   char pattern[1023];  // Read from input file
    int flag = 0;
 
    fp_finalinputfile = fopen(builtdictfilename, "r");
@@ -33,6 +34,7 @@ int func_vidcountwordfromdicttoinput(){
       return 1;
    } 
 
+   /*!Comment: parse through the two file and compare entries */
    while (fscanf(fp_finalinputfile, " %1023s", pattern) == 1){
       pattern[strcspn(pattern, "\n")] = 0;
       fp_finaldictfile = fopen(builtinputfilename, "r");
@@ -40,7 +42,8 @@ int func_vidcountwordfromdicttoinput(){
       loc_incr = 0;
       while (fscanf(fp_finaldictfile, " %1023s", key) == 1){
          key[strcspn(key, "\n")] = 0;
-         value = strcmp(key,pattern); 
+         value = strcmp(key,pattern); // Compare the current word
+         // Increment the word counter if the words are equal
          if(value == 0){
             loc_incr ++; 
          }      
@@ -48,7 +51,7 @@ int func_vidcountwordfromdicttoinput(){
             var_TotalWordCount ++;
          }
       }   
-            flag = 1;
+      flag = 1;
       fclose(fp_finaldictfile);
 
       /*!Comment: provide results */
