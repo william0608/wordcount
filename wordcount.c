@@ -2,6 +2,7 @@
 #include <string.h>
 
 #define DEF_LINE_LENGTH 1023
+#define DEF_WORD_LENGTH 1023
 
 
 /*!Comment: Global variables used inthe program*/
@@ -40,8 +41,8 @@ void func_vidcountwordfromdicttoinput(){
    FILE *fp_finalinputfile = NULL;
    int value = 1;
    int loc_incr;
-   char key[1023];  // Read from dictfile
-   char pattern[1023];  // Read from input file
+   char key[DEF_WORD_LENGTH];  // Read from dictfile
+   char pattern[DEF_WORD_LENGTH];  // Read from input file
    int flag = 0; // To disable the counter once done
 
    fp_finalinputfile = fopen(VAR_BUILTDICTFILENAME, "r");
