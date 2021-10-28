@@ -7,3 +7,15 @@
   - The input stream aare consider as file present in the currect directory
 - The total number of word is the sum of all word from input files concatenated
 
+
+# Description of the implementation
+The program will first get the inputs, consolidate the inpiuts then execute the count, and final provide the output and clean the workspace.
+- Inputs can come from command line or standard intput. 
+  The function func_vidrequestinputfiles() will manages the standard inputs
+  The function func_vidbuildinputstream() will manage command line inputs
+  The function func_vidParseDictfile() will parse the dicftfile 
+-
+
+# Usage
+the wordcout is compilated as follow:
+gcc wordcound.c -o wordcound
