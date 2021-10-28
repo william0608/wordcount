@@ -26,7 +26,7 @@ int func_vidcountwordfromdicttoinput(){
    int loc_incr;
    char key[1023];  // Read from dictfile
    char pattern[1023];  // Read from input file
-   int flag = 0;
+   int flag = 0; // To disable the counter once done
 
    fp_finalinputfile = fopen(builtdictfilename, "r");
    if (fp_finalinputfile == NULL){
